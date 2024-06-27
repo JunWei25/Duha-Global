@@ -1,20 +1,28 @@
-import React from 'react'
-import SideBar from '../components/SideBar'
-import Home from './home/Home'
-import Header from '../components/Header'
+import React, { useState } from 'react';
+import SideBar from '../components/SideBar';
+import Home from './home/Home';
+import Header from '../components/Header';
 
-const Layout = () => {
-  return (
-    <>
-    <body className="flex items-start justify-between">
-        <SideBar/>
-        <main className="w-full h-full pl-[320px]">
-            <Header></Header>
-            <Home></Home>
-        </main>
-    </body>
-    </>
-  )
+interface LayoutProps {
+  collapsed: boolean;
 }
 
-export default Layout
+const Layout: React.FC<LayoutProps> = () => {
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarCollapsed(!sidebarCollapsed);
+  };
+
+  return (
+    <div className="flex min-h-screen">
+      <SideBar collapsed={sidebarCollapsed} toggleSidebar={toggleSidebar} />
+      <main className={`flex-1 transition-all duration-300 ${sidebarCollapsed ? 'pl-20' : 'pl-80'}`}>
+        <Header />
+        <Home />
+      </main>
+    </div>
+  );
+};
+
+export default Layout;
