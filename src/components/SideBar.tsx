@@ -74,7 +74,7 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, toggleSidebar }) => {
                 key={itemIndex}
                 to={item.link}
                 className={({ isActive }) =>
-                  `flex items-center gap-2 block px-2 py-2 rounded hover:bg-gray-100 text-[0.9rem] ${
+                  `flex items-center gap-2 block px-2 py-2 rounded hover:bg-blue-50 text-[0.9rem] ${
                     collapsed ? "justify-center" : ""
                   } ${isActive ? "bg-blue-100" : ""}`
                 }
