@@ -25,7 +25,7 @@ const Header = () => {
   ]);
 
   return (
-    <div className="flex gap-4 p-4 border-b">
+    <div className="flex gap-4 p-3 border-b">
       <div className="flex justify-end w-full gap-3">
         <DropdownMenu>
           <DropdownMenuTrigger>

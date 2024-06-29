@@ -19,7 +19,9 @@ const Layout: React.FC<LayoutProps> = () => {
       <SideBar collapsed={sidebarCollapsed} toggleSidebar={toggleSidebar} />
       <main className={`flex-1 transition-all duration-300 ${sidebarCollapsed ? 'pl-20' : 'pl-80'}`}>
         <Header />
-        <Home />
+        <div className="p-3">
+          <Home></Home>
+        </div>
       </main>
     </div>
   );
