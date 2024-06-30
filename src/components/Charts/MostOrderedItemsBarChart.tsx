@@ -43,7 +43,7 @@ const MostOrderedItemsProgressBar = () => {
     <ResponsiveContainer width="100%" height="100%">
     <div className="flex flex-col items-center justify-center w-full">
       {data.map((entry, index) => (
-        <div key={index} className="mb-1 w-full">
+        <div key={index} className="mb-2 p-0  mt-0 w-full">
           <div className="flex justify-between mb-1 w-full">
             <div className="text-left font-medium">{entry.item}</div>
             <div className="text-right font-medium">{entry.current}</div>
