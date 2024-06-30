@@ -15,7 +15,7 @@ const General = () => {
         <CardTitle>Orders</CardTitle>
         <CardDescription>Here are the number of orders</CardDescription>
       </CardHeader>
-      <CardContent className="h-56 p-0 mr-3 mb-3">
+      <CardContent className="h-56 p-0 mr-3 mb-5">
         <OrderBarChart></OrderBarChart>
       </CardContent>
     </Card>

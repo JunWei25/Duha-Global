@@ -1,4 +1,5 @@
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import React from "react";
+import { ResponsiveContainer } from "recharts";
 
 interface DataEntry {
   item: string;
@@ -34,43 +35,32 @@ const data: DataEntry[] = [
   },
 ];
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#FF00FF"];
+// Determine the highest current value
+const maxCurrent = Math.max(...data.map((entry) => entry.current));
 
 const MostOrderedItemsProgressBar = () => {
   return (
-    <div className="flex items-center justify-center">
-      <div className="mr-5">
-        <ResponsiveContainer width={300} height={250}>
-          <PieChart>
-            <Pie
-              data={data}
-              innerRadius={60}
-              outerRadius={80}
-              fill="#8884d8"
-              dataKey="current"
-            >
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
-              ))}
-            </Pie>
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
-      <div>
-        {data.map((entry, index) => (
-          <div key={index} className="flex items-center justify-normal mb-2">
-            <div
-              className="w-4 h-4 mr-2"
-              style={{ backgroundColor: COLORS[index % COLORS.length] }}
-            />
-            <div>{`${entry.item}: ${entry.current}`}</div>
+    <ResponsiveContainer width="100%" height="100%">
+    <div className="flex flex-col items-center justify-center w-full">
+      {data.map((entry, index) => (
+        <div key={index} className="mb-1 w-full">
+          <div className="flex justify-between mb-1 w-full">
+            <div className="text-left font-medium">{entry.item}</div>
+            <div className="text-right font-medium">{entry.current}</div>
           </div>
-        ))}
-      </div>
+          <div className="w-full bg-gray-200 rounded-full h-4">
+            <div
+              className="h-4 rounded-full"
+              style={{
+                width: `${(entry.current / maxCurrent) * 100}%`,
+                backgroundColor: "#8db4ff",
+              }}
+            />
+          </div>
+        </div>
+      ))}
     </div>
+    </ResponsiveContainer>
   );
 };
 
