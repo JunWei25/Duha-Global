@@ -79,7 +79,7 @@ const OrderBarChart = () => {
     <ResponsiveContainer width="100%" height="100%">
       <ComposedChart
         data={data}
-        margin={{ top: 20, right: 10, left: 10, bottom: 1 }}
+        margin={{ top: 5, right: 10, left: 10, bottom: 1 }}
       >
         <XAxis dataKey="date" tick={{ fill: "#001c51" }} />
         <YAxis tick={{ fill: "#001c51" }} domain={[0, yAxisMax]} />
