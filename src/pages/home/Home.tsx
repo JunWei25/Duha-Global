@@ -20,6 +20,12 @@ const generateData = () => {
   };
 };
 
+const upcomingEvents = [
+  { date: "2024-07-05", orderDetails: "Order #12345: John Doe, 3 items" },
+  { date: "2024-07-10", orderDetails: "Order #12346: Jane Smith, 5 items" },
+  { date: "2024-07-15", orderDetails: "Order #12347: Alice Johnson, 2 items" },
+];
+
 export default function Home() {
   const [data, setData] = useState({
     totalSales: 0,
@@ -37,7 +43,7 @@ export default function Home() {
     <div className="">
       <div className="flex gap-3 mb-4">
         <div className="border border-solid rounded-lg shadow-md p-6 w-3/5">
-          <div className="text-lg font-bold">Sales summary</div>
+          <div className="text-xl font-bold">Sales summary</div>
           <div className="flex gap-2 mt-2">
             <HomeSales
               icon={<ShoppingCart />}
@@ -73,17 +79,29 @@ export default function Home() {
             <CardTitle>Upcoming Events</CardTitle>
           </CardHeader>
           <CardContent className="p-4">
-            {/* Add content for upcoming events here */}
+            <ul className="space-y-4">
+              {upcomingEvents.map((event, index) => (
+                <li
+                  key={index}
+                  className="flex justify-between items-center border-b pb-2"
+                >
+                  <div className="text-gray-700 font-semibold">
+                    {event.date}
+                  </div>
+                  <div className="text-gray-500">{event.orderDetails}</div>
+                </li>
+              ))}
+            </ul>
           </CardContent>
         </Card>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 h-full">
         <div className="border border-solid rounded-lg shadow-md">
           <General />
         </div>
-        <Card className="p-4 shadow-md">
-          <CardHeader className="py-2">
-            <CardTitle>Most Ordered Items</CardTitle>
+        <Card className="shadow-md">
+          <CardHeader className="mt-4">
+            <CardTitle>Top Products</CardTitle>
           </CardHeader>
           <CardContent>
             <MostOrderedItemsProgressBar />

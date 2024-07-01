@@ -10,7 +10,8 @@ import OrderBarChart from "../Charts/OrderBarChart";
 
 const General = () => {
   return (
-    <Card>
+    <div className="h-full">
+    <Card className="h-full">
       <CardHeader>
         <CardTitle>Orders</CardTitle>
         <CardDescription>Here are the number of orders</CardDescription>
@@ -19,6 +20,7 @@ const General = () => {
         <OrderBarChart></OrderBarChart>
       </CardContent>
     </Card>
+    </div>
   );
 };
 
